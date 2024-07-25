@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
 
-  iperf3-server:
+  iperf3server:
     build: ./server
     ports:
       - "5201:5201"
