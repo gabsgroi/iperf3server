@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.33.0 (3ce457399)
+  labels:
+    io.kompose.service: iperf3server
+  name: iperf3server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: iperf3server
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yaml
+        kompose.version: 1.33.0 (3ce457399)
+      labels:
+        io.kompose.network/v0-default: "true"
+        io.kompose.service: iperf3server
+    spec:
+      containers:
+        - image: iperf3server:v1
+          name: iperf3server
+          ports:
+            - containerPort: 5201
+              hostPort: 5201
+              protocol: TCP
+      restartPolicy: Always
