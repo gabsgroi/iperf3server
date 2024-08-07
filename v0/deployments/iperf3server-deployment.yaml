@@ -22,7 +22,7 @@ spec:
         io.kompose.service: iperf3server
     spec:
       containers:
-        - image: gabsgroi/iperf3server:v1
+        - image: gabsgroi/iperf3server
           name: iperf3server
           ports:
             - containerPort: 5201
